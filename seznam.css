@@ -1,0 +1,671 @@
+/* =========================
+   RESET / ZÁKLAD
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  color: #111;
+  background: #f2f2f2;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 28px 32px;
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.nav {
+  display: flex;
+  gap: 56px;
+}
+
+.nav__link {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  min-height: 80vh; /* ← zkrácení plochy */
+}
+
+/* FULL-BLEED BACKGROUND */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url("nahore.avif") center / cover no-repeat;
+}
+
+/* CONTENT CENTRING */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+  padding: 140px 24px 90px;
+  text-align: center;
+}
+
+/* =========================
+   TYPOGRAFIE
+========================= */
+
+/* H1 – 96px, regular, Space Grotesk */
+.hero__title {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 96px;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+/* Subtext – 32px */
+.hero__subtitle {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #111;
+  max-width: 720px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .hero__title {
+    font-size: 72px;
+  }
+
+  .nav {
+    gap: 32px;
+  }
+
+  .nav__link,
+  .brand {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    padding: 18px 18px;
+  }
+
+  .hero__content {
+    padding: 120px 16px 70px;
+    gap: 26px;
+  }
+
+  .hero__title {
+    font-size: 48px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__subtitle {
+    font-size: 18px;
+  }
+
+  .nav {
+    gap: 18px;
+  }
+
+  .nav__link,
+  .brand {
+    font-size: 16px;
+  }
+}
+/* ===== Sekce: Co přesně dělám ===== */
+.what {
+  background: transparent;
+  padding: 120px 0 90px;
+}
+
+.what__inner {
+  width: min(1600px, calc(100% - 120px));
+  margin: 0 auto;
+}
+
+.what__title {
+  margin: 0 0 56px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 72px; /* velký nadpis jako na sc */
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+.what__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 64px; /* mezery mezi kartami */
+}
+
+.whatcard {
+  background: #ffff;
+  border-radius: 24px;
+  padding: 56px 52px;
+}
+
+.whatcard__title {
+  margin: 0 0 22px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 40px; /* “SEO / UX/UI / Synergie” */
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+.whatcard__text {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 28px; /* text v kartě */
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #111;
+  max-width: 22ch; /* aby se text lámal podobně jako ve figmě */
+}
+
+/* ===== Responsivita ===== */
+@media (max-width: 1100px) {
+  .what__title {
+    font-size: 56px;
+  }
+  .section-title {
+    font-size: 56px;
+  }
+  .what__grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .whatcard__title {
+    font-size: 32px;
+  }
+  .whatcard__text {
+    font-size: 22px;
+    max-width: none;
+  }
+}
+/* ===== Projekty / Carousel ===== */
+.projects {
+  padding: 120px 0;
+  background: transparent;
+}
+
+/* Stejný container jako ostatní sekce (SEO boxy) */
+.container {
+  width: min(1600px, calc(100% - 120px));
+  margin: 0 auto;
+}
+
+/* Nadpis Projekty – zarovnání na stejnou osu */
+.section-title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 56px;
+}
+
+/* ===== Carousel ===== */
+.carousel {
+  position: relative;
+}
+
+/* Viewport – jen blok, bez šipek */
+.carousel__viewport {
+  position: relative;
+  width: 100%;
+  min-height: 640px;
+}
+
+/* Jedna aktivní slide */
+.carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.carousel__slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== Šipky – úplně mimo layout ===== */
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+  outline: none;
+}
+
+.carousel__arrow img {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+.carousel__arrow:focus,
+.carousel__arrow:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.carousel__arrow--left {
+  left: -96px;
+}
+
+.carousel__arrow--right {
+  right: -96px;
+}
+
+/* ===== KARTA PROJEKTU ===== */
+.project-card {
+  display: grid;
+  grid-template-columns: 640px 1fr;
+  background: transparent;
+  border-radius: 24px;
+  overflow: visible;
+}
+
+/* LEVÝ BLOK – jen obrázek */
+.project-card__media {
+  background: none;
+  padding: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* HOTOVÝ OBRÁZEK Z FIGMY */
+.project-card__media img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+/* TEXT */
+.project-card__text {
+  padding: 56px 72px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  background: #fff;
+  border-radius: 0 24px 24px 0;
+}
+
+.project-card__title {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 20px;
+}
+
+.project-card__text p {
+  margin: 0 0 22px;
+}
+
+.project-card__tags {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #8b6cff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .project-card {
+    grid-template-columns: 520px 1fr;
+  }
+
+  .project-card__text {
+    padding: 44px 48px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__media {
+    padding: 24px;
+  }
+
+  .project-card__text {
+    padding: 32px 24px;
+    font-size: 18px;
+  }
+
+  .carousel__arrow--left {
+    left: -64px;
+  }
+
+  .carousel__arrow--right {
+    right: -64px;
+  }
+}
+/* =========================
+   SDÍLENÉ NADPISY (sjednocení)
+========================= */
+.section-h2 {
+  margin: 0 0 56px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 72px;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+/* (volitelné) aby "Projekty" měly stejnou velikost jako "Co přesně dělám?" */
+.section-title {
+  font-size: 72px; /* ← změna z 96 na 72 */
+  margin: 0 0 56px;
+}
+
+/* =========================
+   Jak přemýšlím nad designem
+========================= */
+
+.process {
+  background: transparent; /* šedé pozadí stránky */
+  padding: 0;
+}
+
+/* bílý blok – stejný jako ostatní sekce */
+.process .section-wrap {
+  background: #fff;
+  border-radius: 28px;
+  padding: 96px 96px 88px;
+}
+
+/* nadpis */
+.process__title {
+  margin: 0 0 56px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 72px;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+/* grid */
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 64px;
+}
+
+/* jednotlivý krok */
+.process__item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* číslo */
+.process__number {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 400;
+  color: #8b6cff;
+  margin-bottom: 22px;
+}
+
+/* název kroku */
+.process__item h3 {
+  margin: 0 0 14px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #111;
+}
+
+/* popis */
+.process__item p {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 1.35;
+  color: #111;
+}
+
+/* =========================
+   O mně
+========================= */
+.about {
+  background: transparent;
+  padding: 120px 0 90px;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 96px;
+  align-items: start;
+}
+
+.about__text p {
+  margin: 0 0 34px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #111;
+  max-width: 34ch;
+}
+
+.about__photo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.about__photo img {
+  width: min(420px, 100%);
+  height: auto;
+  border-radius: 0; /* podle screenshotu je bez zaoblení */
+  display: block;
+}
+
+/* CTA věta (fialová) */
+.cta-line {
+  margin: 36px 0 0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #8b6cff;
+}
+
+/* =========================
+   Footer / Kontakty
+========================= */
+.footer {
+  background: #d9d9d9;
+  padding: 70px 0 90px;
+}
+
+.footer__title {
+  margin: 0 0 34px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.footer__link {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 1200px) {
+  .process__grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 44px;
+    gap: 40px;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .about__text p {
+    max-width: none;
+    font-size: 28px;
+  }
+
+  .cta-line {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .section-h2 {
+    font-size: 56px;
+    margin-bottom: 34px;
+  }
+
+  .process {
+    padding: 90px 0;
+  }
+
+  .process__grid {
+    grid-template-columns: 1fr;
+    padding: 28px;
+    border-radius: 22px;
+  }
+
+  .process-card__num {
+    font-size: 40px;
+    margin-bottom: 18px;
+  }
+
+  .process-card__title {
+    font-size: 24px;
+  }
+
+  .process-card__meta {
+    font-size: 18px;
+  }
+
+  .about {
+    padding: 90px 0 70px;
+  }
+
+  .about__text p {
+    font-size: 22px;
+  }
+
+  .cta-line {
+    font-size: 22px;
+  }
+
+  .footer__title {
+    font-size: 32px;
+  }
+
+  .footer__link {
+    font-size: 18px;
+  }
+}
+
+/* HERO necháváme full-bleed (na obrázek) */
+.hero {
+  margin-bottom: 56px; /* mezera pod hero blokem */
+}
