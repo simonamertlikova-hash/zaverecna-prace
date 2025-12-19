@@ -26,18 +26,31 @@ body {
 }
 
 /* =========================
-   GLOBAL PAGE SCALE (50%)
+   TOKENS
 ========================= */
+
 :root {
   --page-scale: 0.5;
+
+  /* Typografická škála (podle screenu) */
+  --fs-h3: 95.94px; /* hlavní hero nadpis */
+  --fs-h4: 67.85px; /* sekční nadpisy */
+  --fs-h5: 47.99px; /* 01,02,03,04 */
+  --fs-h6: 33.94px; /* Analýza, UX, Vizuál, Optimalizace */
+  --fs-p: 24px; /* body text */
+
+  --project-overlap: 30px;
+  --space-22: 22px;
 }
 
-/* Chrome / Edge / Safari */
+/* =========================
+   GLOBAL PAGE SCALE (50%)
+========================= */
+
 .page {
   zoom: var(--page-scale);
 }
 
-/* Firefox fallback */
 @supports not (zoom: 1) {
   .page {
     zoom: 1;
@@ -48,6 +61,16 @@ body {
   body {
     overflow-x: hidden;
   }
+}
+
+/* =========================
+   ZÁKLADNÍ TYPO
+========================= */
+
+p {
+  font-size: var(--fs-p);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* =========================
@@ -70,7 +93,7 @@ body {
 }
 
 .brand {
-  font-size: 24px;
+  font-size: var(--fs-p);
   font-weight: 400;
   letter-spacing: -0.01em;
 }
@@ -81,7 +104,7 @@ body {
 }
 
 .nav__link {
-  font-size: 24px;
+  font-size: var(--fs-p);
   font-weight: 400;
   letter-spacing: -0.01em;
   color: #111;
@@ -130,15 +153,16 @@ body {
 .hero__title {
   margin: 0;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 96px;
+  font-size: var(--fs-h3);
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: -0.03em;
 }
 
+/* o řadu menší */
 .hero__subtitle {
   margin: 0;
-  font-size: 32px;
+  font-size: var(--fs-p);
   line-height: 1.4;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -146,7 +170,7 @@ body {
 }
 
 /* =========================
-   CONTAINER + NADPISY
+   CONTAINER + NADPISY SEKCI
 ========================= */
 
 .container,
@@ -159,13 +183,13 @@ body {
 .section-h2,
 .what__title,
 .process__title {
+  margin: 0 0 56px;
   font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--fs-h4);
+  line-height: 1.05;
   font-weight: 400;
   letter-spacing: -0.03em;
   color: #111;
-  line-height: 1.05;
-  font-size: 72px;
-  margin: 0 0 56px;
 }
 
 /* =========================
@@ -191,7 +215,7 @@ body {
 
 .whatcard__title {
   margin: 0 0 22px;
-  font-size: 40px;
+  font-size: var(--fs-h6);
   line-height: 1.1;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -199,7 +223,7 @@ body {
 
 .whatcard__text {
   margin: 0;
-  font-size: 28px;
+  font-size: var(--fs-p); /* Analyzuji data... = 24px */
   line-height: 1.35;
   letter-spacing: -0.01em;
   max-width: 22ch;
@@ -261,10 +285,7 @@ body {
   right: -96px;
 }
 
-/* ===== Project card + overlap (podle screenu) ===== */
-:root {
-  --project-overlap: 30px;
-}
+/* ===== Project card + overlap ===== */
 
 .project-card {
   display: grid;
@@ -275,7 +296,7 @@ body {
 
 .project-card__media {
   padding: 0;
-  border-radius: 24px 0 0 24px; /* jen vlevo */
+  border-radius: 24px 0 0 24px;
   overflow: hidden;
   display: flex;
 }
@@ -287,22 +308,20 @@ body {
   display: block;
 }
 
-/* bílý blok lehce překrývá obrázek */
 .project-card__text {
   position: relative;
   background: #fff;
-  border-radius: 0 24px 24px 0; /* jen vpravo */
+  border-radius: 0 24px 24px 0;
   margin-left: calc(-1 * var(--project-overlap));
   padding: 56px 72px;
   padding-left: calc(72px + var(--project-overlap));
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-  font-size: 24px;
+  font-size: var(--fs-p);
   line-height: 1.5;
   letter-spacing: -0.01em;
 }
 
 .project-card__title {
-  font-size: 32px;
+  font-size: var(--fs-h6);
   font-weight: 400;
   margin: 0 0 20px;
 }
@@ -313,7 +332,7 @@ body {
 
 .project-card__tags {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: var(--fs-p);
   color: #8b6cff;
 }
 
@@ -338,29 +357,31 @@ body {
   gap: 64px;
 }
 
+/* mezery přesně 22px */
 .process__number {
-  font-size: 48px;
+  display: block;
+  font-size: var(--fs-h5);
   line-height: 1;
   font-weight: 400;
   color: #8b6cff;
-  margin-bottom: 22px;
+  margin: 0 0 var(--space-22);
 }
 
 .process__item h3 {
-  margin: 0 0 14px;
-  font-size: 28px;
+  margin: 0 0 var(--space-22);
+  font-size: var(--fs-h6);
   line-height: 1.2;
   font-weight: 400;
 }
 
 .process__item p {
   margin: 0;
-  font-size: 22px;
+  font-size: var(--fs-p);
   line-height: 1.35;
 }
 
 /* =========================
-   O MNĚ
+   O MNĚ – finální verze
 ========================= */
 
 .about {
@@ -370,38 +391,48 @@ body {
 
 .about__grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 96px;
+  grid-template-columns: 1fr 1fr; /* ⬅️ víc místa pro fotku */
+  gap: 80px;
   align-items: start;
 }
 
-.about__text p {
-  margin: 0 0 34px;
-  font-size: 32px;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  max-width: 34ch;
-}
-
-.about__photo {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.about__photo img {
-  width: min(420px, 100%);
-  height: auto;
-  border-radius: 0;
-  display: block;
-}
-
-/* CTA – odsazení OD sekce "O mně" + od footeru */
+/* CTA – vždy vlastní styl (nepřebírá se z .about__text p) */
 .cta-line {
-  margin: 72px 0 120px; /* ⬅️ tady je to důležité */
-  font-size: 32px;
+  margin: 120px auto 160px;
+  max-width: 900px;
+  text-align: center;
+  font-size: var(--fs-h5); /* ⬅️ větší, jak jsi chtěla */
   line-height: 1.35;
   letter-spacing: -0.01em;
   color: #8b6cff;
+}
+/* O mně – zase udělat 3 odstavce (mezery mezi nimi) */
+.about__text p {
+  margin: 0 0 22px; /* mezera mezi odstavci */
+  font-size: var(
+    --fs-p
+  ); /* nech text jako body (24px), ať není titěrný ani obří */
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  max-width: 46ch; /* aby se to nelámalo moc úzce */
+}
+
+.about__text p:last-child {
+  margin-bottom: 0; /* poslední odstavec bez extra mezery */
+}
+
+/* fotka */
+.about__photo {
+  display: flex;
+  justify-content: center;
+}
+
+.about__photo img {
+  width: 100%;
+  max-width: 460px; /* ⬅️ TADY řídíš velikost fotky */
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* =========================
@@ -417,7 +448,7 @@ body {
   margin: 0 0 34px;
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: var(--fs-h6);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -429,7 +460,7 @@ body {
 }
 
 .footer__link {
-  font-size: 24px;
+  font-size: var(--fs-p);
   line-height: 1.35;
   letter-spacing: -0.01em;
   color: #111;
@@ -441,10 +472,8 @@ body {
    RESPONSIVE
 ========================= */
 
+/* tablet */
 @media (max-width: 1100px) {
-  .hero__title {
-    font-size: 72px;
-  }
   .nav {
     gap: 32px;
   }
@@ -454,32 +483,20 @@ body {
   }
 
   .what__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 vedle sebe */
     gap: 22px;
-  }
-  .what__title,
-  .section-title,
-  .section-h2,
-  .process__title {
-    font-size: 56px;
-  }
-  .whatcard__title {
-    font-size: 32px;
-  }
-  .whatcard__text {
-    font-size: 22px;
-    max-width: none;
   }
 }
 
+/* menší desktop */
 @media (max-width: 1200px) {
   .project-card {
     grid-template-columns: 520px 1fr;
   }
+
   .project-card__text {
     padding: 44px 48px;
     padding-left: calc(48px + var(--project-overlap));
-    font-size: 22px;
   }
 
   .process__grid {
@@ -488,17 +505,18 @@ body {
   }
 }
 
+/* mobil layout pro projekty */
 @media (max-width: 900px) {
   .project-card {
     grid-template-columns: 1fr;
   }
 
-  /* na mobilu overlap vypneme (v jednosloupcovém layoutu nedává smysl) */
   .project-card__text {
     margin-left: 0;
     border-radius: 0 0 24px 24px;
     padding: 32px 24px;
   }
+
   .project-card__media {
     border-radius: 24px 24px 0 0;
   }
@@ -511,27 +529,34 @@ body {
   }
 }
 
+/* mobil */
 @media (max-width: 700px) {
   .topbar {
-    padding: 18px 18px;
+    padding: 18px;
   }
+
   .hero__content {
     padding: 120px 16px 70px;
     gap: 26px;
   }
+
   .hero__title {
     font-size: 48px;
-    letter-spacing: -0.02em;
   }
   .hero__subtitle {
     font-size: 18px;
   }
+
   .nav {
     gap: 18px;
   }
   .nav__link,
   .brand {
     font-size: 16px;
+  }
+
+  .what__grid {
+    grid-template-columns: 1fr;
   }
 
   .process {
@@ -543,16 +568,6 @@ body {
   .process__grid {
     grid-template-columns: 1fr;
   }
-  .process__number {
-    font-size: 40px;
-    margin-bottom: 18px;
-  }
-  .process__item h3 {
-    font-size: 24px;
-  }
-  .process__item p {
-    font-size: 18px;
-  }
 
   .about {
     padding: 90px 0 70px;
@@ -561,10 +576,16 @@ body {
     grid-template-columns: 1fr;
     gap: 56px;
   }
-  .about__text p {
-    font-size: 22px;
-    max-width: none;
+
+  .about__photo {
+    justify-content: center;
   }
+
+  .about__photo img {
+    max-width: 260px;
+    max-height: 360px;
+  }
+
   .cta-line {
     font-size: 22px;
   }
