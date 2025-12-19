@@ -443,7 +443,7 @@ body {
 
 .process {
   background: transparent; /* šedé pozadí stránky */
-  padding: 0;
+  padding: 120px 0;
 }
 
 /* bílý blok – stejný jako ostatní sekce */
@@ -668,4 +668,30 @@ body {
 /* HERO necháváme full-bleed (na obrázek) */
 .hero {
   margin-bottom: 56px; /* mezera pod hero blokem */
+}
+/* =========================
+   GLOBAL PAGE SCALE (50%)
+   ========================= */
+
+:root {
+  --page-scale: 0.5;
+}
+
+/* Chrome / Edge / Safari */
+.page {
+  zoom: var(--page-scale);
+}
+
+/* Firefox fallback */
+@supports not (zoom: 1) {
+  .page {
+    zoom: 1;
+    transform: scale(var(--page-scale));
+    transform-origin: top center;
+    width: calc(100% / var(--page-scale));
+  }
+
+  body {
+    overflow-x: hidden;
+  }
 }
